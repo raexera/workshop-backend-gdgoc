@@ -1,0 +1,10 @@
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NULL,
+    status INT DEFAULT 0 NOT NULL,
+    due_date TIMESTAMP NOT NULL,
+    is_active INT DEFAULT 1 NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NULL
+);
