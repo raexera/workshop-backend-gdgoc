@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"todo-list-service/infrastructure"
 	"todo-list-service/internal/api"
 )
@@ -10,7 +12,12 @@ func main() {
 	db := infrastructure.NewDBConnection()
 	defer db.Close()
 
-	// HTTP
+	// HTTP Server
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	routes := api.InitRoutes(db)
 	routes.Run(":8080")
 }
