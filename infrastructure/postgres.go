@@ -3,12 +3,9 @@ package infrastructure
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 
 	_ "github.com/lib/pq"
-
-	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -20,10 +17,6 @@ type Config struct {
 }
 
 func NewDBConnection() *sql.DB {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
-	}
-
 	config := Config{
 		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),
